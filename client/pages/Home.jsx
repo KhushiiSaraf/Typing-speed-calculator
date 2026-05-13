@@ -1,6 +1,6 @@
 import Header from "../src/components/Header";
 import Navbar from "../src/components/Navbar";
-import Restart from "../src/components/restart";
+import Restart from "../src/components/Restart";
 import StatsCards from "../src/components/StatsCards";
 import TypingBox from "../src/components/TypingBox";
 import { handleError } from "../util";
@@ -58,7 +58,7 @@ function Home({ mode, time, setTime, increaseTime, decreaseTime, isRunning, setC
         // Fetch new random text
         try {
             setLoadingText(true);
-            const response = await fetch("http://localhost:5000/api/texts/random");
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/texts/random`);
             const data = await response.json();
             // Repeat the text to make it long enough for typing tests
             setText(data.content.repeat(10));
