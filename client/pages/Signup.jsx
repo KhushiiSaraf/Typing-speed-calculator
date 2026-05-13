@@ -25,7 +25,7 @@ function Signup() {
             return handleError("Please fill all the fields");
         }
         try {
-            const url = "http://localhost:5000/auth/signup";
+            const url = `${import.meta.env.VITE_API_URL}/auth/signup`;
             const response = await fetch(url, {
                 method: "POST",
                 headers: {

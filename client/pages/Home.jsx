@@ -18,7 +18,7 @@ function Home({ mode, time, setTime, increaseTime, decreaseTime, isRunning, setC
         const fetchText = async () => {
             try {
                 setLoadingText(true);
-                const response = await fetch("http://localhost:5000/api/texts/random");
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/texts/random`);
                 const data = await response.json();
                 // Repeat the text to make it long enough for typing tests
                 setText(data.content.repeat(10));

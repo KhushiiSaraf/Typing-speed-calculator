@@ -59,7 +59,7 @@ function Typing({ isAuthenticated, setIsAuthenticated }) {
         const fetchText = async () => {
             try {
                 setLoadingText(true);
-                const response = await fetch("http://localhost:5000/api/texts/random");
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/texts/random`);
                 const data = await response.json();
                 // Repeat the text to make it long enough for typing tests
                 setText(data.content.repeat(10));
@@ -157,7 +157,7 @@ function Typing({ isAuthenticated, setIsAuthenticated }) {
     const handleRestart = async () => {
         try {
             setLoadingText(true);
-            const response = await fetch("http://localhost:5000/api/texts/random");
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/texts/random`);
             const data = await response.json();
             // Repeat the text to make it long enough for typing tests
             setText(data.content.repeat(10));
@@ -223,7 +223,7 @@ function Typing({ isAuthenticated, setIsAuthenticated }) {
         try {
             const token = localStorage.getItem("jwtToken");
 
-            const res = await fetch("http://localhost:5000/score/update", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/score/update`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -246,7 +246,7 @@ function Typing({ isAuthenticated, setIsAuthenticated }) {
             const token = localStorage.getItem("jwtToken");
 
             const res = await fetch(
-                "http://localhost:5000/survival/update",
+                `${import.meta.env.VITE_API_URL}/survival/update`,
                 {
                     method: "POST",
 
@@ -275,7 +275,7 @@ function Typing({ isAuthenticated, setIsAuthenticated }) {
             const token = localStorage.getItem("jwtToken");
 
             const res = await fetch(
-                "http://localhost:5000/survival/best",
+                `${import.meta.env.VITE_API_URL}/survival/best`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -298,7 +298,7 @@ function Typing({ isAuthenticated, setIsAuthenticated }) {
             const token = localStorage.getItem("jwtToken");
 
             const res = await fetch(
-                "http://localhost:5000/survival/leaderboard",
+                `${import.meta.env.VITE_API_URL}/survival/leaderboard`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -326,7 +326,7 @@ function Typing({ isAuthenticated, setIsAuthenticated }) {
         try {
             const token = localStorage.getItem("jwtToken");
 
-            const res = await fetch("http://localhost:5000/score/best", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/score/best`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -368,7 +368,7 @@ function Typing({ isAuthenticated, setIsAuthenticated }) {
         try {
             setLoadingFeedback(true);
 
-            const res = await fetch("http://localhost:5000/api/ai-feedback", {
+            const res = await fetch(`${import.meta.env.VITE_API_URL}/api/ai-feedback`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
