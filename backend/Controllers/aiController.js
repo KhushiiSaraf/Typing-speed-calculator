@@ -8,12 +8,12 @@ const ai = new GoogleGenAI({
 const getAIFeedback = async (req, res) => {
     const { originalText, userText } = req.body;
 
-    const prompt = `
-Compare the original and typed text and give very short, simple feedback in a sentence or 2 for a typing test. Use easy language. Focus on key mistakes and give improvement tips. Don't use symbols or formatting. 
+    const prompt = `Analyze this typing test. Original: ${originalText} Typed: ${userText}
 
-Original: ${originalText}
-User: ${userText}
-`;
+Give exactly 2 short simple sentences, no symbols or formatting.
+Sentence 1: Tell the user what type of mistakes they made, what pattern, in plain simple english, like a friend talking.
+Sentence 2: One concrete drill or tip to fix the most common mistake. 
+Write like you are talking to a casual user not a developer. Be brief and specific, never say just slow down or practice more..`;
 
     try {
         const response = await ai.models.generateContent({
