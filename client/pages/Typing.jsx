@@ -5,7 +5,7 @@ import Navbar from '../src/components/Navbar';
 import Header from '../src/components/Header';
 import StatsCards from '../src/components/StatsCards';
 import TypingBox from '../src/components/TypingBox';
-import Restart from '../src/components/restart';
+import Restart from '../src/components/Restart';
 import Timer from "../src/components/Timer";
 import BestScoreCard from "../src/components/BestScoreCard";
 import NormalMode from "./NormalMode";
