@@ -14,32 +14,27 @@ function TypingBox({
 }) {
 
 
-    const lastProcessedWordIndex = useRef(-1);
-    useEffect(() => {
-        lastProcessedWordIndex.current = -1;
-    }, [input]);
+const lastProcessedWordIndex = useRef(-1);
+useEffect(() => {
+    lastProcessedWordIndex.current = -1;
+}, [input]);
 
-    // pre-split words (optimized)
-    const actualWords = text.split(" ");
+const actualWords = text.split(" ");
 
-    const currentIndex = input.length;
+const currentIndex = input.length;
 
-    // centered window logic
-    const windowSize = 80;
-    const half = Math.floor(windowSize / 2);
+// Start shifting after just 10 characters instead of waiting for middle
+const windowSize = 80;
+const start = Math.max(0, currentIndex - 10);
+const end = Math.min(text.length, start + windowSize);
 
-    const start = Math.max(0, currentIndex - half);
-    const end = Math.min(text.length, start + windowSize);
+const visibleText = text.slice(start, end);
 
-    const visibleText = text.slice(start, end);
+const inputRef = useRef(null);
 
-    const inputRef = useRef(null);
-
-
-
-    useEffect(() => {
-        inputRef.current.focus();
-    }, []);
+useEffect(() => {
+    inputRef.current.focus();
+}, []);
 
     return (
         <div
@@ -49,6 +44,7 @@ function TypingBox({
             <p
                 className="text-base sm:text-lg md:text-[24px] lg:text-[29px] leading-relaxed tracking-wide whitespace-nowrap overflow-x-auto hide-scrollbar"
             >
+            
                 {visibleText.split("").map((char, i) => {
                     const actualIndex = start + i;
 
