@@ -10,9 +10,10 @@ function SurvivalMode({ mode, time, onIncrease, onDecrease, isRunning, setChosen
                 <div className="flex flex-col items-center md:items-start flex-1 md:flex-none">
                     <Header mode={mode} />
                     <p className="text-slate-400 text-sm max-w-xs leading-relaxed text-center md:text-left mt-2">
-                        Stay alive as long as you can ⏳ <br />
-                        Correct words give you +2 seconds. <br />
-                        Mistakes reduce your time. <br />
+                        Stay alive as long as you can ⏳<br/>
+                        Correct word = +2 seconds<br/>
+                        Wrong word = -5 seconds<br/>
+                        No backspace allowed!<br/>
                     </p>
                 </div>
                 <div className="flex items-center justify-center flex-1 md:flex-none mt-4 md:mt-0">
